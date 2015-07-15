@@ -1,24 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8">
     <title>Blacksmith</title>
-    <link rel="stylesheet" type="text/css" href="css/base.css" />
     <link rel="stylesheet" type="text/css" href="css/entry.css" />
     <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/font-awesome.min.css" />
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/entry.js"></script>
   </head>
   <body>
     <main class="entry">
       <header>
         <h1>Blacksmith</h1>
         <h2>An open-source framework for source code review</h2>
-        <nav class="entry-nav">
-          <a href="#" class="button button-outline">Begin <i class="fa fa-chevron-right"></i></a>
-        </nav>
-        <footer>
-          Built using io.js <script>document.write(process.version)</script> &amp; Electron <script>document.write("v" + process.versions['electron'])</script>
-        </footer>
-      </main>
+        <form class="login">
+          <input placeholder="Username/Email" type="text"></input>
+          <input placeholder="Password" type="password"></input>
+          <a href="views/main.html" class="button button-green button-100">Sign In <i class="fa fa-sign-in"></i></a>
+        </form>
+      </header>
+      <footer>
+        Built using io.js <script>document.write(process.version)</script> &amp; Electron <script>document.write("v" + process.versions['electron'])</script>
+      </footer>
+    </main>
   </body>
 </html>

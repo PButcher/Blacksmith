@@ -9,8 +9,12 @@
 
 /* nodes */
 
+* {
+  outline: none;
+}
+
 html, body {
-  background-color: #252525;
+  background-color: #151515;
   font-family: Verdana, Arial, sans-serif;
   color: #EEEEEE;
 }
@@ -19,7 +23,7 @@ h1 {
   font-family: Cinzel, sans-serif;
   font-size: 3em;
   font-weight: normal;
-  margin-bottom: 0px;
+  margin: 0px;
 }
 
 h2 {
@@ -31,31 +35,80 @@ h2 {
 
 /* general classes */
 
+/* icons */
+
+i {
+  font-size: .75em;
+}
+
+.button i {
+  margin-left: 5px;
+}
+
 /* buttons */
 
 a.button {
   display: inline-block;
   border-radius: 2px;
   padding: 10px 20px;
-  box-shadow: 0px 3px 6px rgba(0,0,0,.16), 0px 3px 6px rgba(0,0,0,.23);
+  box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
   text-decoration: none;
   color: #EEE;
 }
 
   .button.button-red {
-    background-color: #E82F17;
+      background-color: #D14836;
   }
+
+    .button.button-red:hover {
+      background-color: #E82F17;
+    }
 
   .button.button-green {
     background-color: #47A100;
   }
 
+    .button.button-green:hover {
+      background-color: #53BB00;
+    }
+
   .button.button-blue {
     background-color: #0060A1;
   }
+
+    .button.button-blue:hover {
+      background-color: #006CB5;
+    }
 
   .button.button-outline {
     background-color: transparent;
     border: solid 2px #AAA;
     color: #DDD;
+  }
+
+    .button.button-outline:hover {
+      border-color: #888;
+    }
+
+  .button.button-blank {
+    background-color: transparent;
+    border: 0;
+    color: #DDD;
+    box-shadow: none;
+  }
+
+    .button.button-blank:hover {
+      background-color: rgba(0,0,0,.3);
+    }
+
+  .button-left {
+    float: left;
+  }
+
+  .button-right {
+    float: right;
+  }
+
+  .button-100 {
+    width: 230px;
   }
