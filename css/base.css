@@ -1,4 +1,7 @@
+/* base */
+
 /* fonts */
+
 @font-face {
   font-family: Cinzel;
   src: url(../fonts/Cinzel/Cinzel-Regular.ttf);
@@ -10,17 +13,6 @@ html, body {
   background-color: #252525;
   font-family: Verdana, Arial, sans-serif;
   color: #EEEEEE;
-}
-
-header {
-  text-align: center;
-}
-
-footer {
-  text-align: center;
-  color: #555;
-  font-size: .75em;
-  margin-top: 50px;
 }
 
 h1 {
@@ -38,12 +30,6 @@ h2 {
 }
 
 /* general classes */
-
-/* nav */
-nav.entry-nav {
-  overflow: auto;
-  margin-top: 25px;
-}
 
 /* buttons */
 

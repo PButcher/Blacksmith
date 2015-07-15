@@ -1,6 +1,8 @@
 /* entry */
 
-main.entry {
+/* nodes */
+
+main {
   width: 600px;
   height: 200px;
   margin: auto;
@@ -9,4 +11,22 @@ main.entry {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+header {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  color: #555;
+  font-size: .75em;
+  margin-top: 50px;
+}
+
+/* nav */
+
+nav.entry-nav {
+  overflow: auto;
+  margin-top: 25px;
 }
