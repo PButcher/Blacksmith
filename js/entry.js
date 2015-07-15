@@ -5,6 +5,6 @@ window.$ = window.jQuery = require('./vendor/jquery/dist/jquery.min.js');
 $("document").ready(function() {
 
   // Populate footer
-  $("footer").html("Built using io.js " + process.version +
+  $("footer").html("Built with io.js " + process.version +
     " & Electron " + process.versions['electron']);
 });
