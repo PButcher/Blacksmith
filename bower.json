@@ -1,0 +1,21 @@
+{
+  "name": "blacksmith",
+  "version": "0.0.1",
+  "homepage": "https://github.com/PButcher/blacksmith",
+  "authors": [
+    "PButcher <pbutcher93@gmail.com>"
+  ],
+  "description": "An open-source framework for source code review",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "font-awesome": "~4.3.0"
+  }
+}
