@@ -1,0 +1,5 @@
+@import '../settings';
+
+@mixin icon {
+  font-size: $text-size-smaller;
+}

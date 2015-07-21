@@ -1,3 +1,19 @@
+@import '../settings';
+
+* {
+  outline: none;
+}
+
+html, body {
+  background-color: $colour-main-bg;
+  font-family: $font-stack;
+  color: $colour-main-text;
+}
+
+main {
+  overflow: auto;
+}
+
 .hidden {
   display: none;
 }

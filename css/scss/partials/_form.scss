@@ -1,0 +1,9 @@
+@import '../modules/form';
+
+form {
+  @include form;
+}
+
+.form-dark {
+  @include form-dark
+}

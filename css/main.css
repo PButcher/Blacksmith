@@ -1,4 +1,125 @@
+* {
+  outline: none; }
+
+html, body {
+  background-color: #151515;
+  font-family: Verdana, Arial, sans-serif;
+  color: #EEEEEE; }
+
+main {
+  overflow: auto; }
+
 .hidden {
   display: none; }
+
+.button {
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #EEEEEE; }
+  .button i {
+    margin-left: 5px; }
+
+.button-red {
+  background-color: #D14836; }
+  .button-red:hover {
+    background-color: #EEEEEE; }
+
+.button-green {
+  background-color: #47A100; }
+  .button-green:hover {
+    background-color: #53BB00; }
+
+.button-blue {
+  background-color: #0060A1; }
+  .button-blue:hover {
+    background-color: #006CB5; }
+
+.button-outline {
+  background-color: transparent;
+  border: solid 2px #AAAAAA;
+  color: #DDDDDD; }
+  .button-outline:hover {
+    border-color: #888888; }
+
+.button-blank {
+  background-color: transparent;
+  border: 0;
+  color: #DDDDDD;
+  box-shadow: none; }
+  .button-blank:hover {
+    background-color: rgba(0, 0, 0, 0.33); }
+
+.button-left {
+  float: left; }
+
+.button-right {
+  float: right; }
+
+@font-face {
+  font-family: Cinzel;
+  src: url(../fonts/Cinzel/Cinzel-Regular.ttf); }
+.login {
+  width: 300px;
+  margin: 25px auto; }
+  .login input {
+    background-color: transparent;
+    border-bottom-color: #333333;
+    color: #EEEEEE;
+    width: 250px; }
+  .login .button {
+    margin: 25px 0px 10px 0px; }
+
+form {
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  overflow: auto;
+  padding: 25px;
+  text-align: center; }
+  form input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: solid 2px #333333;
+    border-radius: 2px;
+    display: block;
+    padding: 10px; }
+    form input:focus {
+      border-bottom: solid 2px #006CB5; }
+  form .button {
+    margin: 25px 0px 10px 0px; }
+
+.form-dark {
+  background-color: #252525; }
+
+i {
+  font-size: 0.75em; }
+
+.view-entry {
+  width: 600px;
+  height: 400px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+  .view-entry h1 {
+    font-family: Cinzel, sans-serif;
+    font-size: 3em;
+    font-weight: normal;
+    margin: 0px; }
+  .view-entry h2 {
+    font-family: Cinzel, sans-serif;
+    font-size: 1em;
+    color: #888;
+    margin-top: 0px; }
+  .view-entry header {
+    text-align: center; }
+  .view-entry footer {
+    text-align: center;
+    color: #555555;
+    font-size: 0.75em; }
 
 /*# sourceMappingURL=main.css.map */

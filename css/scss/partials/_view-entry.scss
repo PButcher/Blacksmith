@@ -1,0 +1,5 @@
+@import '../modules/view-entry';
+
+.view-entry {
+  @include view-entry;
+}

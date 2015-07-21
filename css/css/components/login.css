@@ -2,18 +2,18 @@
 
 /* general classes */
 
-form.login {
+/*form.login {
   width: 300px;
-  margin: 25px auto;
-  padding: 25px;
-  background-color: #252525;
-  border-radius: 2px;
-  box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
-  overflow: auto;
-  text-align: center;
-}
+  margin: 25px auto;*/
+  /*padding: 25px;*/
+  /*background-color: #252525;*/
+  /*border-radius: 2px;*/
+  /*box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);*/
+  /*overflow: auto;*/
+  /*text-align: center;*/
+/*}*/
 
-.login input {
+/*.login input {
   display: block;
   width: 250px;
   margin: 5px auto;
@@ -32,4 +32,4 @@ form.login {
 
 .login a.button {
   margin: 25px 0px 10px 0px;
-}
+}*/

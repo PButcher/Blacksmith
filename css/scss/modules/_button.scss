@@ -1,0 +1,67 @@
+@import '../settings';
+
+@mixin button {
+    border-radius: 2px;
+    box-shadow: $card-shadow;
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: $colour-main-text;
+
+    i {
+      margin-left: 5px;
+    }
+}
+
+@mixin button-red {
+  background-color: $colour-dark-red;
+
+  &:hover {
+    background-color: $colour-main-text;
+  }
+}
+
+@mixin button-green {
+  background-color: $colour-dark-green;
+
+  &:hover {
+    background-color: $colour-light-green;
+  }
+}
+
+@mixin button-blue {
+  background-color: $colour-dark-blue;
+
+  &:hover {
+    background-color: $colour-light-blue;
+  }
+}
+
+@mixin button-outline {
+  background-color: transparent;
+  border: solid 2px $colour-light-grey;
+  color: $colour-main-text-alt;
+
+  &:hover {
+    border-color: $colour-button-outline;
+  }
+}
+
+@mixin button-blank {
+  background-color: transparent;
+  border: 0;
+  color: $colour-main-text-alt;
+  box-shadow: none;
+
+  &:hover {
+    background-color: $bg-a-33;
+  }
+}
+
+@mixin button-left {
+  float: left;
+}
+
+@mixin button-right {
+  float: right;
+}

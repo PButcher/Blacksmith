@@ -2,14 +2,14 @@
 
 /* fonts */
 
-@font-face {
+/*@font-face {
   font-family: Cinzel;
   src: url(../fonts/Cinzel/Cinzel-Regular.ttf);
-}
+}*/
 
 /* nodes */
 
-* {
+/** {
   outline: none;
 }
 
@@ -17,9 +17,9 @@ html, body {
   background-color: #151515;
   font-family: Verdana, Arial, sans-serif;
   color: #EEEEEE;
-}
+}*/
 
-h1 {
+/*h1 {
   font-family: Cinzel, sans-serif;
   font-size: 3em;
   font-weight: normal;
@@ -31,7 +31,7 @@ h2 {
   font-size: 1em;
   color: #888;
   margin-top: 0px;
-}
+}*/
 
 /* general classes */
 

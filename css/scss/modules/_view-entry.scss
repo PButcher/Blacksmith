@@ -1,0 +1,37 @@
+@import '../settings';
+
+@mixin view-entry {
+
+  width: 600px;
+  height: 400px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  h1 {
+    font-family: Cinzel, sans-serif;
+    font-size: 3em;
+    font-weight: normal;
+    margin: 0px;
+  }
+
+  h2 {
+    font-family: Cinzel, sans-serif;
+    font-size: 1em;
+    color: #888;
+    margin-top: 0px;
+  }
+
+  header {
+    text-align: center;
+  }
+
+  footer {
+    text-align: center;
+    color: $colour-mid-grey;
+    font-size: $text-size-smaller;
+  }
+}

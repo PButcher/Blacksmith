@@ -3,17 +3,9 @@
 module.exports = function(grunt) {
 
 	grunt.initConfig({
-		// connect: {
-		// 	server: {
-		// 		options: {
-		// 			port: 5000,
-		// 			base: "./"
-		// 		}
-		// 	}
-		// },
 		watch: {
 			scss: {
-				files: ["css/scss/**.scss"],
+				files: ["css/scss/**/*.scss"],
 				tasks: ["sass"]
 			},
 			html: {
@@ -34,9 +26,7 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks("grunt-contrib-sass");
 	grunt.loadNpmTasks("grunt-contrib-watch");
-	// grunt.loadNpmTasks("grunt-contrib-connect");
 	grunt.loadNpmTasks("grunt-notify");
 
-	// grunt.registerTask("default", ["connect", "watch"]);
 	grunt.registerTask("default", ["watch"]);
 };

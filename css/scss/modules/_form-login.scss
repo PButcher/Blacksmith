@@ -1,0 +1,18 @@
+@import '../settings';
+
+@mixin form-login {
+
+  width: 300px;
+  margin: 25px auto;
+
+  input {
+    background-color: transparent;
+    border-bottom-color: $colour-dark-grey;
+    color: $colour-main-text;
+    width: 250px;
+  }
+
+  .button {
+    margin: 25px 0px 10px 0px;
+  }
+}
