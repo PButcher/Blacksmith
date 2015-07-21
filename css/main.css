@@ -13,29 +13,56 @@ main, section {
   display: none; }
 
 .button {
+  background-color: transparent;
   border-radius: 2px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   display: inline-block;
   padding: 10px 20px;
   text-decoration: none;
   color: #EEEEEE; }
+  .button:hover {
+    background-color: transparent; }
   .button i {
     margin-left: 5px; }
 
 .button-red {
-  background-color: #D14836; }
+  background-color: #D14836;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #EEEEEE; }
   .button-red:hover {
     background-color: #EEEEEE; }
+  .button-red i {
+    margin-left: 5px; }
 
 .button-green {
-  background-color: #47A100; }
+  background-color: #47A100;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #EEEEEE; }
   .button-green:hover {
     background-color: #53BB00; }
+  .button-green i {
+    margin-left: 5px; }
 
 .button-blue {
-  background-color: #0060A1; }
+  background-color: #0060A1;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #EEEEEE; }
   .button-blue:hover {
     background-color: #006CB5; }
+  .button-blue i {
+    margin-left: 5px; }
 
 .button-outline {
   background-color: transparent;
