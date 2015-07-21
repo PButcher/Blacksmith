@@ -1,6 +1,7 @@
 @import '../settings';
 
-@mixin button {
+@mixin button($background: transparent, $hover-background: transparent) {
+    background-color: $background;
     border-radius: 2px;
     box-shadow: $card-shadow;
     display: inline-block;
@@ -8,33 +9,13 @@
     text-decoration: none;
     color: $colour-main-text;
 
+    &:hover {
+      background-color: $hover-background;
+    }
+
     i {
       margin-left: 5px;
     }
-}
-
-@mixin button-red {
-  background-color: $colour-dark-red;
-
-  &:hover {
-    background-color: $colour-main-text;
-  }
-}
-
-@mixin button-green {
-  background-color: $colour-dark-green;
-
-  &:hover {
-    background-color: $colour-light-green;
-  }
-}
-
-@mixin button-blue {
-  background-color: $colour-dark-blue;
-
-  &:hover {
-    background-color: $colour-light-blue;
-  }
 }
 
 @mixin button-outline {
