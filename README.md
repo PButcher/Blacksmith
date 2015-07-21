@@ -20,7 +20,6 @@ $ npm install
 
 # Get bower dependencies
 $ bower install
-
 ```
 
 ### To run ###
