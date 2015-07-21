@@ -5,15 +5,15 @@
 }
 
 .button-red {
-  @include button($colour-dark-red, $colour-main-text);
+  @include button-theme($colour-dark-red, $colour-main-text);
 }
 
 .button-green {
-  @include button($colour-dark-green, $colour-light-green);
+  @include button-theme($colour-dark-green, $colour-light-green);
 }
 
 .button-blue {
-  @include button($colour-dark-blue, $colour-light-blue);
+  @include button-theme($colour-dark-blue, $colour-light-blue);
 }
 
 .button-outline {

@@ -1,17 +1,12 @@
 @import '../settings';
 
-@mixin button($background: transparent, $hover-background: transparent) {
-    background-color: $background;
+@mixin button {
     border-radius: 2px;
     box-shadow: $card-shadow;
     display: inline-block;
     padding: 10px 20px;
     text-decoration: none;
     color: $colour-main-text;
-
-    &:hover {
-      background-color: $hover-background;
-    }
 
     i {
       margin-left: 5px;
@@ -45,4 +40,13 @@
 
 @mixin button-right {
   float: right;
+}
+
+@mixin button-theme($background: transparent, $hover-background: transparent) {
+
+    background-color: $background;
+
+    &:hover {
+      background-color: $hover-background;
+    }
 }
