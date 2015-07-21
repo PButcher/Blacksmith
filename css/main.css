@@ -6,7 +6,7 @@ html, body {
   font-family: Verdana, Arial, sans-serif;
   color: #EEEEEE; }
 
-main {
+main, section {
   overflow: auto; }
 
 .hidden {
