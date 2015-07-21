@@ -20,4 +20,11 @@ $ npm install
 
 # Get bower dependencies
 $ bower install
+
+```
+
+### To run ###
+
+```
+$ electron absolute/path/to/blacksmith
 ```
