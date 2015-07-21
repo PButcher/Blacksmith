@@ -1,13 +1,4 @@
-/* main */
+.hidden {
+  display: none; }
 
-/* imports */
-
-@import url("base.css");
-@import url("components/tree-view.css");
-@import url("components/code-pane.css");
-
-/* nodes */
-
-main {
-  overflow: auto;
-}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,37 @@
+/* entry */
+
+/* imports */
+
+@import url("base.css");
+@import url("components/login.css");
+
+/* nodes */
+
+main {
+  width: 600px;
+  height: 400px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+header {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  color: #555;
+  font-size: .75em;
+  margin-top: 50px;
+}
+
+/* nav */
+
+nav.entry-nav {
+  overflow: auto;
+  margin-top: 25px;
+}
