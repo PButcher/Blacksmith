@@ -14,12 +14,9 @@ program
 
 var tree = prongs.getTree(program.args[0])
 var out = program.args[1];
+var res = util.inspect(tree, false, null);
 
-if(program.stringify) {
-  res = JSON.stringify(tree);
-} else {
-  res = util.inspect(tree, false, null);
-}
+if(program.stringify) res = JSON.stringify(tree);
 
 if (out == undefined) out = "prongs-out.json";
 
