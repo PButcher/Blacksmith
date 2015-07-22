@@ -13,30 +13,6 @@
     }
 }
 
-@mixin button-red {
-  background-color: $colour-dark-red;
-
-  &:hover {
-    background-color: $colour-main-text;
-  }
-}
-
-@mixin button-green {
-  background-color: $colour-dark-green;
-
-  &:hover {
-    background-color: $colour-light-green;
-  }
-}
-
-@mixin button-blue {
-  background-color: $colour-dark-blue;
-
-  &:hover {
-    background-color: $colour-light-blue;
-  }
-}
-
 @mixin button-outline {
   background-color: transparent;
   border: solid 2px $colour-light-grey;
@@ -64,4 +40,13 @@
 
 @mixin button-right {
   float: right;
+}
+
+@mixin button-theme($background: transparent, $hover-background: transparent) {
+
+    background-color: $background;
+
+    &:hover {
+      background-color: $hover-background;
+    }
 }
