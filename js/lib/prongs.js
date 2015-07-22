@@ -5,6 +5,8 @@ var path = require('path');
 // getTree
 function getTree(filepath) {
 
+  filepath = path.normalize(filepath);
+
   var stats = fs.lstatSync(filepath);
   var info = {
     path: filepath,
@@ -20,11 +22,6 @@ function getTree(filepath) {
     info.type = "file";
   }
   return info;
-}
-
-if (module.parent == undefined) {
-  var util = require('util');
-  console.log(util.inspect(getTree(process.argv[2]), false, null));
 }
 
 // exports
