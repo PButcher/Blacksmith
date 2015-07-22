@@ -18,7 +18,7 @@ var res = util.inspect(tree, false, null);
 
 if(program.stringify) res = JSON.stringify(tree);
 
-if (out == undefined) out = "prongs-out.json";
+if(out == undefined) out = "prongs-out.json";
 
 fs.writeFile(out, res, function(err) {
   if(err) return console.log(err);
