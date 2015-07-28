@@ -1,0 +1,70 @@
+@import '../settings';
+
+@mixin view-main {
+
+}
+
+@mixin workspace {
+  box-sizing: border-box;
+  height: 100%;
+  padding-top: $main-menu-height;
+  padding-bottom: $status-bar-height;
+}
+
+@mixin menu {
+  box-sizing: border-box;
+  height: $main-menu-height;
+  left: 0;
+  line-height: $main-menu-height;
+  padding: 0px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  .logo {
+    font-family: $logo-font-stack;
+    font-size: 1.25em;
+  }
+
+  .menu-left {
+    float: left;
+  }
+
+  .menu-right {
+    float: right;
+  }
+}
+
+@mixin status-bar {
+  bottom: 0;
+  color: $colour-mid-grey;
+  font-size: $text-size-smaller;
+  height: $status-bar-height;
+  left: 0;
+  line-height: $status-bar-height;
+  margin: 0px 5px;
+  position: fixed;
+  width: 100%;
+}
+
+@mixin tree-view {
+  background-color: $colour-v-dark-grey;
+
+  ul {
+    list-style-type: none;
+    padding-left: 0px;
+
+    a {
+      color: $colour-main-text;
+      text-decoration: none;
+    }
+
+    ul {
+      padding-left: 10px;
+    }
+  }
+}
+
+@mixin annotations {
+  background-color: $colour-v-dark-grey;
+}

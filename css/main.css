@@ -16,7 +16,26 @@ main, section, .view {
   display: none; }
 
 .pane {
+  box-sizing: border-box;
   float: left;
+  height: 100%; }
+
+.pane-row {
+  height: auto; }
+
+.pane-row-2 {
+  height: 20%; }
+
+.pane-row-4 {
+  height: 40%; }
+
+.pane-row-6 {
+  height: 60%; }
+
+.pane-row-8 {
+  height: 80%; }
+
+.pane-row-10 {
   height: 100%; }
 
 .pane-column-1 {
@@ -48,6 +67,37 @@ main, section, .view {
 
 .pane-column-10 {
   width: 100%; }
+
+.code-pane {
+  border-right: solid 4px #1C1C1C;
+  position: relative; }
+  .code-pane:last-child {
+    border-right: 0; }
+  .code-pane .code-tabs {
+    height: 40px;
+    position: relative;
+    width: 100%;
+    background-color: #1C1C1C;
+    overflow: visible; }
+    .code-pane .code-tabs .code-tab {
+      box-sizing: border-box;
+      border-bottom: solid 4px #333333;
+      color: #DDDDDD;
+      display: inline-block;
+      font-size: 0.75em;
+      height: 40px;
+      line-height: 40px;
+      min-width: 75px;
+      max-width: 150px;
+      padding: 0px 5px; }
+      .code-pane .code-tabs .code-tab.tab-active {
+        border-color: #006CB5; }
+  .code-pane .code-body {
+    background-color: #252525;
+    box-sizing: border-box;
+    margin-top: -40px;
+    padding-top: 40px;
+    height: 100%; }
 
 .button {
   border-radius: 2px;
@@ -158,5 +208,53 @@ i {
     text-align: center;
     color: #555555;
     font-size: 0.75em; }
+
+.workspace {
+  box-sizing: border-box;
+  height: 100%;
+  padding-top: 50px;
+  padding-bottom: 25px; }
+
+.menu {
+  box-sizing: border-box;
+  height: 50px;
+  left: 0;
+  line-height: 50px;
+  padding: 0px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%; }
+  .menu .logo {
+    font-family: Cinzel, sans-serif;
+    font-size: 1.25em; }
+  .menu .menu-left {
+    float: left; }
+  .menu .menu-right {
+    float: right; }
+
+.status-bar {
+  bottom: 0;
+  color: #555555;
+  font-size: 0.75em;
+  height: 25px;
+  left: 0;
+  line-height: 25px;
+  margin: 0px 5px;
+  position: fixed;
+  width: 100%; }
+
+.tree-view {
+  background-color: #1C1C1C; }
+  .tree-view ul {
+    list-style-type: none;
+    padding-left: 0px; }
+    .tree-view ul a {
+      color: #EEEEEE;
+      text-decoration: none; }
+    .tree-view ul ul {
+      padding-left: 10px; }
+
+.annotations {
+  background-color: #1C1C1C; }
 
 /*# sourceMappingURL=main.css.map */

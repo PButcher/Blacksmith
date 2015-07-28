@@ -4,6 +4,30 @@
   @include pane;
 }
 
+.pane-row {
+  @include pane-row();
+}
+
+.pane-row-2 {
+  @include pane-row(20%);
+}
+
+.pane-row-4 {
+  @include pane-row(40%);
+}
+
+.pane-row-6 {
+  @include pane-row(60%);
+}
+
+.pane-row-8 {
+  @include pane-row(80%);
+}
+
+.pane-row-10 {
+  @include pane-row(100%);
+}
+
 .pane-column-1  {
   @include pane-column(10%);
 }
@@ -42,4 +66,8 @@
 
 .pane-column-10 {
   @include pane-column(100%);
+}
+
+.code-pane {
+  @include code-pane;
 }

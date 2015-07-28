@@ -1,14 +1,58 @@
 @import '../settings';
 
 @mixin pane {
+  box-sizing: border-box;
   float: left;
   height: 100%;
 }
 
-@mixin pane-row {
-  overflow: auto;
+@mixin pane-row($height: auto) {
+  height: $height;
 }
 
 @mixin pane-column($width) {
   width: $width;
+}
+
+@mixin code-pane {
+  border-right: solid 4px $colour-v-dark-grey;
+  position: relative;
+
+  &:last-child {
+    border-right: 0;
+  }
+
+  .code-tabs {
+    height: $code-tab-height;
+    position: relative;
+    width: 100%;
+    background-color: $colour-v-dark-grey;
+    overflow: visible;
+
+    .code-tab {
+      box-sizing: border-box;
+      border-bottom: solid 4px $colour-dark-grey;
+      color: $colour-main-text-alt;
+      display: inline-block;
+      font-size: $text-size-smaller;
+      height: $code-tab-height;
+      line-height: $code-tab-height;
+      min-width: 75px;
+      max-width: 150px;
+      padding: 0px 5px;
+
+      &.tab-active {
+        border-color: $colour-light-blue;
+      }
+    }
+  }
+  .code-body {
+    background-color: $colour-card-bg;
+    box-sizing: border-box;
+    margin-top: -$code-tab-height;
+    padding-top: $code-tab-height;
+    height: 100%;
+    // overflow-y: scroll;
+
+  }
 }

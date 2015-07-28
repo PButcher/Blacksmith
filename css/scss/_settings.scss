@@ -10,6 +10,7 @@ $colour-dark-red:         #D14836;
 $colour-light-red:        #E82F17;
 $colour-dark-green:       #47A100;
 $colour-light-green:      #53BB00;
+$colour-v-dark-grey:      #1C1C1C;
 $colour-dark-grey:        #333333;
 $colour-mid-grey:         #555555;
 $colour-light-grey:       #AAAAAA;
@@ -17,7 +18,13 @@ $colour-light-grey:       #AAAAAA;
 $bg-a-33:                 rgba(0,0,0,.33);
 
 $font-stack:              Verdana, Arial, sans-serif;
+$logo-font-stack:         Cinzel, sans-serif;
 
-$text-size-smaller:        .75em;
+$text-size-smaller:       .75em;
+$text-size-larger:        1.25em;
 
 $card-shadow:             0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+
+$main-menu-height:        50px;
+$status-bar-height:       25px;
+$code-tab-height:         40px;

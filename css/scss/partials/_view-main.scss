@@ -1,0 +1,25 @@
+@import '../modules/view-main';
+
+.view-main {
+  @include view-main;
+}
+
+.workspace {
+  @include workspace;
+}
+
+.menu {
+  @include menu;
+}
+
+.status-bar {
+  @include status-bar;
+}
+
+.tree-view {
+  @include tree-view;
+}
+
+.annotations {
+  @include annotations;
+}
