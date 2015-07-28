@@ -27,23 +27,50 @@
 
       <!-- Section :: Main -->
       <section id="view-main" class="view view-main">
-        <div class="pane pane-column-2">
-            Tree view
+        <div class="menu">
+          <nav class="menu-left">
+            <span class="logo">Blacksmith</span>
+          </nav>
+          <nav class="menu-right">
+            Menu Right
+          </nav>
         </div>
-        <div class="pane pane-column-8">
-          <div class="pane-row">
-            <div class="pane pane-column-5">
-              Code pane
+        <div class="workspace">
+          <div class="pane pane-column-10">
+            <div class="pane-row-8">
+              <div id="tree-view" class="pane pane-column-2 tree-view">
+                  Tree view
+              </div>
+              <div class="pane pane-column-4 code-pane">
+                <nav class="code-tabs">
+                  <a class="code-tab tab-active">Tab</a>
+                  <a class="code-tab">Tab</a>
+                  <a class="code-tab">Tab</a>
+                </nav>
+                <div class="code-body">
+                  Code pane
+                </div>
+              </div>
+              <div class="pane pane-column-4 code-pane">
+                <nav class="code-tabs">
+                  <a class="code-tab tab-active">Tab</a>
+                  <a class="code-tab">Tab</a>
+                  <a class="code-tab">Tab</a>
+                </nav>
+                <div class="code-body">
+                  Code pane
+                </div>
+              </div>
             </div>
-            <div class="pane pane-column-5">
-              Code pane
+            <div class="pane-row-2">
+              <div class="pane pane-column-10 annotations">
+                Annotations pane
+              </div>
             </div>
           </div>
-          <div class="pane-row">
-            <div class="pane pane-column-10">
-              Annotations pane
-            </div>
-          </div>
+        </div>
+        <div class="status-bar">
+          Status Bar
         </div>
       </section>
     </main>
