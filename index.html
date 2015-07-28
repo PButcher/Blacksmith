@@ -9,33 +9,39 @@
   </head>
   <body>
     <main>
-      <section id="view-entry" class="view-entry">
+
+      <!-- Section :: Entry -->
+      <section id="view-entry" class="view view-entry">
         <header>
           <h1>Blacksmith</h1>
-          <h2>An open-source framework for source code review</h2>
+          <h2>Source Code Review</h2>
         </header>
         <form class="login form-dark">
           <input placeholder="Username/Email" type="text"></input>
           <input placeholder="Password" type="password"></input>
-          <a href="#" id="sign-in" class="button button-green button-100">Sign In <i class="fa fa-sign-in"></i></a>
+          <a href="#" id="sign-in" class="button button-green button-100">
+            Sign In <i class="fa fa-sign-in"></i></a>
         </form>
-        <footer>
-        </footer>
+        <footer></footer>
       </section>
-      <section id="view-main" class="view-man">
-        <div class="pane-column">
-          <div class="pane pane-tree-view">
-          </div>
+
+      <!-- Section :: Main -->
+      <section id="view-main" class="view view-main">
+        <div class="pane pane-column-2">
+            Tree view
         </div>
-        <div class="pane-column">
+        <div class="pane pane-column-8">
           <div class="pane-row">
-            <div class="pane pane-code">
+            <div class="pane pane-column-5">
+              Code pane
             </div>
-            <div class="pane pane-code">
+            <div class="pane pane-column-5">
+              Code pane
             </div>
           </div>
           <div class="pane-row">
-            <div class="pane pane-annotations">
+            <div class="pane pane-column-10">
+              Annotations pane
             </div>
           </div>
         </div>

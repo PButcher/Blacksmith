@@ -6,11 +6,14 @@
 
 html, body {
   background-color: $colour-main-bg;
-  font-family: $font-stack;
   color: $colour-main-text;
+  font-family: $font-stack;
+  height: 100%;
+  margin: 0px;
 }
 
-main, section {
+main, section, .view {
+  height: 100%;
   overflow: auto;
 }
 

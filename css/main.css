@@ -3,14 +3,51 @@
 
 html, body {
   background-color: #151515;
+  color: #EEEEEE;
   font-family: Verdana, Arial, sans-serif;
-  color: #EEEEEE; }
+  height: 100%;
+  margin: 0px; }
 
-main, section {
+main, section, .view {
+  height: 100%;
   overflow: auto; }
 
 .hidden {
   display: none; }
+
+.pane {
+  float: left;
+  height: 100%; }
+
+.pane-column-1 {
+  width: 10%; }
+
+.pane-column-2 {
+  width: 20%; }
+
+.pane-column-3 {
+  width: 30%; }
+
+.pane-column-4 {
+  width: 40%; }
+
+.pane-column-5 {
+  width: 50%; }
+
+.pane-column-6 {
+  width: 60%; }
+
+.pane-column-7 {
+  width: 70%; }
+
+.pane-column-8 {
+  width: 80%; }
+
+.pane-column-9 {
+  width: 90%; }
+
+.pane-column-10 {
+  width: 100%; }
 
 .button {
   border-radius: 2px;
