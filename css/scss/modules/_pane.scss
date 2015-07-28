@@ -1,0 +1,14 @@
+@import '../settings';
+
+@mixin pane {
+  float: left;
+  height: 100%;
+}
+
+@mixin pane-row {
+  overflow: auto;
+}
+
+@mixin pane-column($width) {
+  width: $width;
+}

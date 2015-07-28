@@ -1,0 +1,45 @@
+@import '../modules/pane';
+
+.pane {
+  @include pane;
+}
+
+.pane-column-1  {
+  @include pane-column(10%);
+}
+
+.pane-column-2 {
+  @include pane-column(20%);
+}
+
+.pane-column-3 {
+  @include pane-column(30%);
+}
+
+.pane-column-4 {
+  @include pane-column(40%);
+}
+
+.pane-column-5 {
+  @include pane-column(50%);
+}
+
+.pane-column-6 {
+  @include pane-column(60%);
+}
+
+.pane-column-7 {
+  @include pane-column(70%);
+}
+
+.pane-column-8 {
+  @include pane-column(80%);
+}
+
+.pane-column-9 {
+  @include pane-column(90%);
+}
+
+.pane-column-10 {
+  @include pane-column(100%);
+}
