@@ -19,10 +19,11 @@ function buildTree(tree, omissions) {
   for(el in tree) {
     if(tree[el]) {
       if(omissions.indexOf(tree[el].name) < 0) {
-        markup += "<li data-path=" + tree[el].path + ">" + tree[el].name + " : " + tree[el].type + "</li>";
+        markup += '<li data-path=' + tree[el].path + '>' + tree[el].name + ' : ' + tree[el].type;
         if(tree[el].children) {
           markup += buildTree(tree[el].children, omissions);
         }
+        markup += '</li>';
       }
     }
   }
