@@ -68,7 +68,7 @@ function setupMain() {
 function TreeView() {
   this.anchor = '#tree-view';
   this.collapsible = true;
-  this.ordered = true;
+  this.initiallyCollapsed = true;
   this.icons = {};
   this.icons.dirOpen = 'fa-folder-open';
   this.icons.dirClosed = 'fa-folder';
@@ -80,9 +80,9 @@ TreeView.prototype.render = function() {
   var ommit = ['.git', '.sass-cache', 'node_modules', 'vendor'];
   var tree = blacksmith.renderTree('./', ommit);
   $(tree).appendTo($(this.anchor));
-  if(this.collapsible) this.makeCollapsible();
-  if(this.ordered) this.order();
   if(this.icons.active) this.addIcons();
+  if(this.collapsible) this.makeCollapsible();
+  if(this.collapsible && this.initiallyCollapsed) this.collapseAll();
   return this;
 }
 
@@ -98,14 +98,6 @@ TreeView.prototype.makeCollapsible = function(speed) {
     next.parent().children('a').children('i').toggleClass(that.icons.dirOpen);
   });
   return this;
-}
-
-TreeView.prototype.order = function() {
-  // $('#tree-view').append($('#tree-view').children().get().sort(function(a,b) {
-  //   var aProp = $(a).find("span").text(),
-  //       bProp = $(b).find("span").text();
-  //   return(aProp > bProp ? 1 : aProp < bProp ? -1 : 0) * (false ? -1 : 1);
-  // }));
 }
 
 TreeView.prototype.collapseAll = function() {
