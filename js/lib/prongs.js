@@ -18,6 +18,11 @@ function getTree(filepath) {
     info.children = fs.readdirSync(filepath).map(function(child) {
       return getTree(path.join(filepath, child));
     });
+    info.children.sort(function(a,b) {
+      if(a.type === 'directory' && b.type === 'file') return -1;
+      if(b.type === 'directory' && a.type === 'file') return 1;
+      return a.path.localeCompare(b.path);
+    });
   } else {
     info.type = "file";
   }
