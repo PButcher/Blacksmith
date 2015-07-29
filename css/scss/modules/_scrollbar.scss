@@ -1,0 +1,49 @@
+@import '../settings';
+
+@mixin webkit-scrollbar {
+
+  background-color: transparent;
+  opacity: 0;
+  -webkit-transition: opacity .25s;
+
+  &:hover {
+    opacity: 1;
+    background-color: $scrollbar-bg;
+    -webkit-transition: opacity .25s;
+  }
+
+  &:horizontal {
+    height: $scrollbar-thickness;
+  }
+
+  &:vertical {
+    width: $scrollbar-thickness;
+  }
+}
+
+@mixin webkit-scrollbar-button {
+  display: none;
+}
+
+@mixin webkit-scrollbar-track {}
+
+@mixin webkit-scrollbar-track-piece {}
+
+@mixin webkit-scrollbar-thumb {
+  display: none;
+  background-color: $scrollbar-bg;
+  border-radius: $scrollbar-border-radius;
+
+  &:hover {
+    display: block;
+    background-color: $scrollbar-bg-alt;
+  }
+}
+
+@mixin webkit-scrollbar-corner {
+
+}
+
+@mixin webkit-resizer {
+
+}

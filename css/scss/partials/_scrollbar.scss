@@ -1,0 +1,29 @@
+@import '../modules/scrollbar';
+
+::-webkit-scrollbar {
+  @include webkit-scrollbar;
+}
+
+::-webkit-scrollbar-button {
+  @include webkit-scrollbar-button;
+}
+
+::-webkit-scrollbar-track {
+  @include webkit-scrollbar-track;
+}
+
+::-webkit-scrollbar-track-piece {
+  @include webkit-scrollbar-track-piece;
+}
+
+::-webkit-scrollbar-thumb {
+  @include webkit-scrollbar-thumb;
+}
+
+::-webkit-scrollbar-corner {
+  @include webkit-scrollbar-corner;
+}
+
+::-webkit-resizer {
+  @include webkit-resizer;
+}

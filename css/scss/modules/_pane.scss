@@ -47,12 +47,22 @@
     }
   }
   .code-body {
+    box-sizing: border-box;
     background-color: $colour-card-bg;
     box-sizing: border-box;
     margin-top: -$code-tab-height;
     padding-top: $code-tab-height;
     height: 100%;
     // overflow-y: scroll;
+
+    pre {
+      height: 100%;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      padding-right: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
 
   }
 }

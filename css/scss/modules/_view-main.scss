@@ -33,6 +33,10 @@
   .menu-right {
     float: right;
   }
+
+  a {
+    color: $colour-main-text;
+  }
 }
 
 @mixin status-bar {

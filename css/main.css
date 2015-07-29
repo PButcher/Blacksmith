@@ -93,11 +93,19 @@ main, section, .view {
       .code-pane .code-tabs .code-tab.tab-active {
         border-color: #006CB5; }
   .code-pane .code-body {
+    box-sizing: border-box;
     background-color: #252525;
     box-sizing: border-box;
     margin-top: -40px;
     padding-top: 40px;
     height: 100%; }
+    .code-pane .code-body pre {
+      height: 100%;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      padding-right: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important; }
 
 .button {
   border-radius: 2px;
@@ -183,6 +191,30 @@ form {
 i {
   font-size: 0.75em; }
 
+::-webkit-scrollbar {
+  background-color: transparent;
+  opacity: 0;
+  -webkit-transition: opacity .25s; }
+  ::-webkit-scrollbar:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    -webkit-transition: opacity .25s; }
+  ::-webkit-scrollbar:horizontal {
+    height: 8px; }
+  ::-webkit-scrollbar:vertical {
+    width: 8px; }
+
+::-webkit-scrollbar-button {
+  display: none; }
+
+::-webkit-scrollbar-thumb {
+  display: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0px; }
+  ::-webkit-scrollbar-thumb:hover {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.3); }
+
 .view-entry {
   width: 600px;
   height: 400px;
@@ -231,6 +263,8 @@ i {
     float: left; }
   .menu .menu-right {
     float: right; }
+  .menu a {
+    color: #EEEEEE; }
 
 .status-bar {
   bottom: 0;
