@@ -60,46 +60,63 @@ function setupMain() {
 
   var treeView = new TreeView();
   treeView.render();
-  // treeView.render().makeCollapsible();
 }
 
 // + TreeView
 //    Render tree view
 //    Make tree view collapsible
-var TreeView = function() {
-  this.anchor = "#tree-view";
+function TreeView() {
+  this.anchor = '#tree-view';
   this.collapsible = true;
-  this.icons = true;
+  this.ordered = true;
+  this.icons = {};
+  this.icons.dirOpen = 'fa-folder-open';
+  this.icons.dirClosed = 'fa-folder';
+  this.icons.file = 'fa-file';
+  this.icons.active = true;
 };
 
 TreeView.prototype.render = function() {
   var ommit = ['.git', '.sass-cache', 'node_modules', 'vendor'];
   var tree = blacksmith.renderTree('./', ommit);
   $(tree).appendTo($(this.anchor));
-  if(this.collapsible = true) this.makeCollapsible();
-  if(this.icons = true) this.addIcons();
+  if(this.collapsible) this.makeCollapsible();
+  if(this.ordered) this.order();
+  if(this.icons.active) this.addIcons();
   return this;
 }
 
 TreeView.prototype.makeCollapsible = function(speed) {
+  var that = this;
   if(!this.collapsible) this.collapsible = true;
   $('li a').click(function(e) {
     e.preventDefault();
-    console.log($(this).parent());
-    var nextList = $(this).parent().children('ul:first');
+    var next = $(this).parent().children('ul:first');
     if(speed == undefined) speed = 250;
-    nextList.slideToggle(speed);
+    next.slideToggle(speed);
+    next.parent().children('a').children('i').toggleClass(that.icons.dirClosed);
+    next.parent().children('a').children('i').toggleClass(that.icons.dirOpen);
   });
   return this;
 }
 
+TreeView.prototype.order = function() {
+  // $('#tree-view').append($('#tree-view').children().get().sort(function(a,b) {
+  //   var aProp = $(a).find("span").text(),
+  //       bProp = $(b).find("span").text();
+  //   return(aProp > bProp ? 1 : aProp < bProp ? -1 : 0) * (false ? -1 : 1);
+  // }));
+}
+
 TreeView.prototype.collapseAll = function() {
   $('ul ul').hide();
+  $(this.anchor + ' i').removeClass(this.icons.dirOpen);
+  $(this.anchor + ' i').addClass(this.icons.dirClosed);
 }
 
 TreeView.prototype.addIcons = function() {
-  $(".bs-file").prepend('<i class="fa fa-file-o"></i>');
-  $(".bs-directory").prepend('<i class="fa fa-folder-open-o"></i>');
+  $(".bs-file > a").prepend('<i class="fa ' + this.icons.file + '"></i>');
+  $(".bs-directory > a").prepend('<i class="fa ' + this.icons.dirOpen + '"></i>');
 }
 
 TreeView.prototype.removeIcons = function() {

@@ -244,13 +244,26 @@ i {
   width: 100%; }
 
 .tree-view {
-  background-color: #1C1C1C; }
+  background-color: #1C1C1C;
+  font-size: 0.75em; }
+  .tree-view i {
+    margin-right: 5px; }
+  .tree-view .bs-file > a {
+    color: #DDDDDD; }
+  .tree-view .bs-directory > a {
+    color: gold; }
+    .tree-view .bs-directory > a span {
+      font-weight: bold; }
+  .tree-view span {
+    color: #AAAAAA; }
   .tree-view ul {
     list-style-type: none;
-    padding-left: 0px; }
+    padding-left: 5px;
+    margin: 5px 0px; }
     .tree-view ul a {
-      color: #EEEEEE;
       text-decoration: none; }
+      .tree-view ul a:hover span {
+        color: #EEEEEE; }
     .tree-view ul ul {
       padding-left: 10px; }
 

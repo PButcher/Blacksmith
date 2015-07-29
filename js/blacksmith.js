@@ -19,7 +19,7 @@ function buildTree(tree, omissions) {
   for(el in tree) {
     if(tree[el]) {
       if(omissions.indexOf(tree[el].name) < 0) {
-        markup += '<li data-path="' + tree[el].path + '" class="bs-' + tree[el].type + '"><a href="#">' + tree[el].name + '</a>';
+        markup += '<li data-path="' + tree[el].path + '" class="bs-' + tree[el].type + '"><a href="#"><span>' + tree[el].name + '</span></a>';
         if(tree[el].children) {
           markup += buildTree(tree[el].children, omissions);
         }

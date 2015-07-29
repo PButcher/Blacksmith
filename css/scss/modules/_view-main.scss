@@ -49,14 +49,38 @@
 
 @mixin tree-view {
   background-color: $colour-v-dark-grey;
+  font-size: $text-size-smaller;
+
+  i {
+    margin-right: 5px;
+  }
+
+  .bs-file > a {
+    color: $colour-main-text-alt;
+  }
+
+  .bs-directory > a {
+    color: $colour-gold;
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  span {
+    color: $colour-light-grey;
+  }
 
   ul {
     list-style-type: none;
-    padding-left: 0px;
+    padding-left: 5px;
+    margin: 5px 0px;
 
     a {
-      color: $colour-main-text;
       text-decoration: none;
+      &:hover span {
+        color: $colour-main-text;
+      }
     }
 
     ul {
