@@ -56,26 +56,6 @@
 .view-main {
   @include view-main;
 }
-
-.workspace {
-  @include workspace;
-}
-
-.menu {
-  @include menu;
-}
-
-.status-bar {
-  @include status-bar;
-}
-
-.tree-view {
-  @include tree-view;
-}
-
-.annotations {
-  @include annotations;
-}
                   </code></pre>
                 </div>
               </div>
@@ -89,9 +69,6 @@
                   <pre class="line-numbers" data-line><code class="language-javascript">
 // Here's some Javascript
 
-// + TreeView
-//    Render tree view
-//    Make tree view collapsible
 function TreeView() {
   this.anchor = '#tree-view';
   this.collapsible = true;
@@ -102,50 +79,6 @@ function TreeView() {
   this.icons.file = 'fa-file';
   this.icons.active = true;
 };
-
-TreeView.prototype.render = function() {
-  var ommit = ['.git', '.sass-cache', 'node_modules', 'vendor'];
-  var tree = blacksmith.renderTree('./', ommit);
-  $(tree).appendTo($(this.anchor));
-  if(this.icons.active) this.addIcons();
-  if(this.collapsible) this.makeCollapsible();
-  if(this.collapsible && this.initiallyCollapsed) this.collapseAll();
-  return this;
-}
-
-TreeView.prototype.makeCollapsible = function(speed) {
-  var that = this;
-  if(!this.collapsible) this.collapsible = true;
-  $('li a').click(function(e) {
-    e.preventDefault();
-    var next = $(this).parent().children('ul:first');
-    if(speed == undefined) speed = 250;
-    next.slideToggle(speed);
-    next.parent().children('a').children('i').toggleClass(that.icons.dirClosed);
-    next.parent().children('a').children('i').toggleClass(that.icons.dirOpen);
-  });
-  return this;
-}
-
-TreeView.prototype.collapseAll = function() {
-  $('ul ul').hide();
-  $(this.anchor + ' i').removeClass(this.icons.dirOpen);
-  $(this.anchor + ' i').addClass(this.icons.dirClosed);
-}
-
-TreeView.prototype.addIcons = function() {
-  $(".bs-file > a").prepend('<i class="fa ' + this.icons.file + '"></i>');
-  $(".bs-directory > a").prepend('<i class="fa ' + this.icons.dirOpen + '"></i>');
-}
-
-TreeView.prototype.removeIcons = function() {
-  $(".bs-file i, .bs-directory i").remove();
-}
-
-TreeView.prototype.remove = function() {
-  $(this.anchor).html("");
-  return this;
-}
                   </pre></code>
                 </div>
               </div>

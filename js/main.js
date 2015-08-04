@@ -11,7 +11,10 @@ var blacksmith = require('./js/blacksmith.js');
 var views = [
   'entry',
   'main'
-  ];
+];
+
+// Array of open files
+var openFiles = [];
 
 // jQuery magic happens here
 $('document').ready(function() {
@@ -46,7 +49,7 @@ function setupEntry() {
   $('#sign-in').click(function() {
 
     // Do login
-    view("main");
+    view('main');
   });
 
   // Populate footer
@@ -57,65 +60,44 @@ function setupEntry() {
 // + setupMain
 // Set up main view
 function setupMain() {
-
-  var treeView = new TreeView();
-  treeView.render();
+  setupTreeView();
+  setupTreeViewListeners();
 }
 
-// + TreeView
-//    Render tree view
-//    Make tree view collapsible
-function TreeView() {
-  this.anchor = '#tree-view';
-  this.collapsible = true;
-  this.initiallyCollapsed = true;
-  this.icons = {};
-  this.icons.dirOpen = 'fa-folder-open';
-  this.icons.dirClosed = 'fa-folder';
-  this.icons.file = 'fa-file';
-  this.icons.active = true;
-};
-
-TreeView.prototype.render = function() {
-  var ommit = ['.git', '.sass-cache', 'node_modules', 'vendor'];
-  var tree = blacksmith.renderTree('./', ommit);
-  $(tree).appendTo($(this.anchor));
-  if(this.icons.active) this.addIcons();
-  if(this.collapsible) this.makeCollapsible();
-  if(this.collapsible && this.initiallyCollapsed) this.collapseAll();
-  return this;
+// + setupTreeView
+// Generates and renders tree view
+function setupTreeView() {
+  var tree = new blacksmith.tree();
+  tree.anchor = '#tree-view';
+  tree.ommit = ['.git', '.sass-cache', 'node_modules', 'vendor'];
+  tree.render();
 }
 
-TreeView.prototype.makeCollapsible = function(speed) {
-  var that = this;
-  if(!this.collapsible) this.collapsible = true;
-  $('li a').click(function(e) {
-    e.preventDefault();
-    var next = $(this).parent().children('ul:first');
-    if(speed == undefined) speed = 250;
-    next.slideToggle(speed);
-    next.parent().children('a').children('i').toggleClass(that.icons.dirClosed);
-    next.parent().children('a').children('i').toggleClass(that.icons.dirOpen);
+// + setupTreeViewListeners
+// Any interaction events with the tree-view
+function setupTreeViewListeners() {
+
+  // When a file in treeView is clicked
+  $('.bs-file').click(function() {
+    openFile($(this).attr('data-path'));
   });
-  return this;
 }
 
-TreeView.prototype.collapseAll = function() {
-  $('ul ul').hide();
-  $(this.anchor + ' i').removeClass(this.icons.dirOpen);
-  $(this.anchor + ' i').addClass(this.icons.dirClosed);
-}
+// + openFile
+// Tries to open the specified file
+function openFile(filepath) {
 
-TreeView.prototype.addIcons = function() {
-  $(".bs-file > a").prepend('<i class="fa ' + this.icons.file + '"></i>');
-  $(".bs-directory > a").prepend('<i class="fa ' + this.icons.dirOpen + '"></i>');
-}
+  var fileAlreadyOpen = false;
 
-TreeView.prototype.removeIcons = function() {
-  $(".bs-file i, .bs-directory i").remove();
-}
-
-TreeView.prototype.remove = function() {
-  $(this.anchor).html("");
-  return this;
+  if(openFiles.length != 0) {
+    for(var i = 0; i < openFiles.length; i++) {
+      if(openFiles[i].filePath == filepath) {
+        fileAlreadyOpen = true;
+        break;
+      }
+    }
+  }
+  if(fileAlreadyOpen == false) {
+    openFiles.push(new blacksmith.file(filepath));
+  }
 }
