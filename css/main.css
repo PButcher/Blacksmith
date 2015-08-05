@@ -89,15 +89,23 @@ main, section, .view {
       line-height: 40px;
       min-width: 75px;
       max-width: 150px;
-      padding: 0px 5px; }
+      padding: 0px 5px;
+      text-decoration: none; }
       .code-pane .code-tabs .code-tab.tab-active {
         border-color: #006CB5; }
-  .code-pane .code-body {
-    box-sizing: border-box;
+      .code-pane .code-tabs .code-tab i {
+        line-height: 36px;
+        float: right; }
+        .code-pane .code-tabs .code-tab i:hover {
+          cursor: pointer;
+          color: #888888; }
+  .code-pane .code-bodies {
     background-color: #252525;
     box-sizing: border-box;
+    height: 100%;
     margin-top: -40px;
-    padding-top: 40px;
+    padding-top: 40px; }
+  .code-pane .code-body {
     height: 100%; }
     .code-pane .code-body pre {
       height: 100%;

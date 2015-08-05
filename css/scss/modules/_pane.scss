@@ -30,8 +30,9 @@
     overflow: visible;
 
     .code-tab {
+      // background-color: $colour-card-bg;
       box-sizing: border-box;
-      border-bottom: solid 4px $colour-dark-grey;
+      border-bottom: solid $tab-border-height $colour-dark-grey;
       color: $colour-main-text-alt;
       display: inline-block;
       font-size: $text-size-smaller;
@@ -40,18 +41,33 @@
       min-width: 75px;
       max-width: 150px;
       padding: 0px 5px;
+      text-decoration: none;
 
       &.tab-active {
         border-color: $colour-light-blue;
       }
+      span {
+
+      }
+      i {
+        // margin-right: 5px;
+        line-height: $code-tab-height - 4;
+        float: right;
+        &:hover {
+          cursor: pointer;
+          color: $colour-button-outline;
+        }
+      }
     }
   }
-  .code-body {
-    box-sizing: border-box;
+  .code-bodies {
     background-color: $colour-card-bg;
     box-sizing: border-box;
+    height: 100%;
     margin-top: -$code-tab-height;
     padding-top: $code-tab-height;
+  }
+  .code-body {
     height: 100%;
     // overflow-y: scroll;
 
@@ -63,6 +79,5 @@
       padding-top: 0 !important;
       padding-bottom: 0 !important;
     }
-
   }
 }
