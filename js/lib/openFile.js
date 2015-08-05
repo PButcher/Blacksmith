@@ -47,13 +47,14 @@ File.prototype.read = function(filePath, callback) {
 }
 
 File.prototype.getName = function() {
+  console.log(this.filePath);
   return this.filePath.replace(/^.*[\\\/]/, '');
 }
 
 File.prototype.getType = function() {
   var fx = this.getExtension(this.fileName);
   var ft = fileTypes[fx];
-  return (ft != undefined) ? ft : 'none';
+  return (ft != undefined) ? ft : 'markup';
 }
 
 File.prototype.getExtension = function() {

@@ -13,8 +13,11 @@ var views = [
   'main'
 ];
 
-// Array of open files
-var openFiles = [];
+// File manager
+var fm = new blacksmith.fileManager();
+
+// Pane manager
+var pm = new blacksmith.paneManager();
 
 // jQuery magic happens here
 $('document').ready(function() {
@@ -62,6 +65,7 @@ function setupEntry() {
 function setupMain() {
   setupTreeView();
   setupTreeViewListeners();
+  pm.updatePanes();
 }
 
 // + setupTreeView
@@ -86,18 +90,13 @@ function setupTreeViewListeners() {
 // + openFile
 // Tries to open the specified file
 function openFile(filepath) {
+  var fid = fm.open(filepath);
+  pm.addTab(fid, fm.files[fid]);
+}
 
-  var fileAlreadyOpen = false;
-
-  if(openFiles.length != 0) {
-    for(var i = 0; i < openFiles.length; i++) {
-      if(openFiles[i].filePath == filepath) {
-        fileAlreadyOpen = true;
-        break;
-      }
-    }
-  }
-  if(fileAlreadyOpen == false) {
-    openFiles.push(new blacksmith.file(filepath));
-  }
+// + closeFile
+// Tries to close the specified file
+function closeFile(fid) {
+  fm.close(fid);
+  pm.removeTab(fid);
 }

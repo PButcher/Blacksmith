@@ -19,7 +19,7 @@ TreeView.prototype.render = function() {
   var tree = seed('./', this.ommit);
   $(tree).appendTo($(this.anchor));
   if(this.icons.active) this.addIcons();
-  if(this.collapsible) this.makeCollapsible();
+  if(this.collapsible) this.makeCollapsible(0);
   if(this.collapsible && this.initiallyCollapsed) this.collapseAll();
   return this;
 }
