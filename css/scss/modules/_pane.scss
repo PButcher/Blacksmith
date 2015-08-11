@@ -52,7 +52,7 @@
         }
       }
       span {
-
+        overflow: ellipsis;
       }
       i {
         line-height: $code-tab-height - 4;

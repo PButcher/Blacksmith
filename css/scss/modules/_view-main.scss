@@ -35,7 +35,16 @@
   }
 
   a {
-    color: $colour-main-text;
+    color: $colour-button-outline;
+    padding: 5px;
+
+    &:last-child {
+      padding-right: 0px;
+    }
+
+    &:hover {
+        color: $colour-main-text;
+    }
   }
 }
 
@@ -54,6 +63,8 @@
 @mixin tree-view {
   background-color: $colour-v-dark-grey;
   font-size: $text-size-smaller;
+  overflow: scroll;
+  white-space: nowrap;
 
   i {
     margin-right: 5px;
