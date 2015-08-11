@@ -62,10 +62,11 @@ PaneManager.prototype.addPane = function(p) {
     $('#code').append(templatePane);
 }
 
-PaneManager.prototype.drawTab = function(fid, file) {
+PaneManager.prototype.removePane = function(p) {
+  $('#code-pane-' + p).remove();
+}
 
-  // Set active tab
-  this.setActiveTab(fid);
+PaneManager.prototype.drawTab = function(fid, file) {
 
   // New tab template
   var newTab = '<a href="#" class="code-tab tab-active" data-tab="' + fid +
@@ -101,7 +102,11 @@ PaneManager.prototype.setActiveTab = function(fid) {
   $('.code-body').hide();
 
   // Set focussed tab
-  this.tabInFocus = this.panes[this.paneInFocus].tabs[fid];
+  this.panes[this.paneInFocus].tabs.forEach(function(el, i, arr) {
+    if (el.fid == fid) {
+      this.tabInFocus = this.panes[this.paneInFocus].tabs[i];
+    }
+  }.bind(this));
 
   // Add highlight to active tab
   $('#tab-' + fid).addClass('tab-active');

@@ -63,9 +63,29 @@ function setupEntry() {
 // + setupMain
 // Set up main view
 function setupMain() {
+  setupMenu();
   setupTreeView();
   setupTreeViewListeners();
   pm.updatePanes();
+}
+
+// + setupMenu
+// Set up menu items
+function setupMenu() {
+
+  // Pane toggle
+  $('#btn-toggle-pane').click(function() {
+
+    // Do something
+    console.log("Button: Toggle panes");
+  });
+
+  // Sign out
+  $('#btn-sign-out').click(function() {
+
+    // Do something
+    console.log("Button: Sign out");
+  });
 }
 
 // + setupTreeView
@@ -94,10 +114,17 @@ function openFile(filepath) {
   // Open file
   var fid = fm.open(filepath);
 
-  // Create a new tab if this file has not alread been opened
+  // Create a new tab if this file has not already been opened
   if(pm.addTab(fid, fm.files[fid])) {
+
+    // Add event listeners to tab
     addTabEventListeners(fid);
+
+    // Mark this tab as active
     tabActive(fid);
+
+    // Log opened file
+    console.log("Opened: " + fm.files[fid].fileName);
 
   // Switch to this file if it is already open
   } else {
@@ -117,10 +144,25 @@ function closeFile(fid) {
   // Remove tab
   pm.removeTab(fid);
 
-  // Switch to next active tab if one exists
-  fm.files.forEach(function(el, i, arr) {
-    if(fm.files[i] != 0) tabActive(i);
-  });
+  // If this tab is active, switch to next active tab
+  if(pm.tabInFocus.fid == fid) {
+    fm.files.forEach(function(el, i, arr) {
+      if(fm.files[i] != 0) tabActive(i);
+    });
+  }
+
+  // If the last open file was closed
+  if(pm.panes[pm.paneInFocus].tabs.length == 0) {
+    clearStatusBar();
+    clearTitle();
+  }
+}
+
+// + highlightLine
+// Highlight a line of a code block
+function highlightLine(fid, line) {
+  $('#body-' + fid + ' pre').attr('data-line', line);
+  Prism.highlightAll();
 }
 
 // + addTabEventListeners
@@ -169,9 +211,21 @@ function updateStatusBar(text) {
   $('#status-bar').html(text);
 }
 
+// + clearStatusBar
+// Clear status bar
+function clearStatusBar() {
+  $('#status-bar').html('');
+}
+
 // + updateTitle
 // Updates window title
 //    text     : text to add to title
 function updateTitle(text) {
   $('title').html("Blacksmith - " + text);
+}
+
+// + clearTitle
+// Clear title
+function clearTitle() {
+  $('title').html("Blacksmith");
 }

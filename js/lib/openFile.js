@@ -35,8 +35,10 @@ function File(filepath) {
   this.fileType = this.getType();
   this.fileExtension = this.getExtension();
   this.fileContents = '';
+  this.fileContentsArray;
   this.read(this.filePath, function(err, data) {
     this.fileContents = data.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    this.fileContentsArray = data.split('\n');
   }.bind(this));
 }
 
@@ -48,7 +50,6 @@ File.prototype.read = function(filePath, callback) {
 }
 
 File.prototype.getName = function() {
-  console.log(this.filePath);
   return this.filePath.replace(/^.*[\\\/]/, '');
 }
 

@@ -7,6 +7,9 @@ var app = require('app');
 // Module to create native browser window.
 var BrowserWindow = require('browser-window');
 
+// Module to provide native system dialogs
+var dialog = require('dialog');
+
 // Report crashes to our server.
 require('crash-reporter').start();
 
@@ -40,6 +43,9 @@ app.on('ready', function() {
   if(debug) {
     mainWindow.openDevTools();
   }
+
+  // Show open dialog
+  // console.log(dialog.showOpenDialog());
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {

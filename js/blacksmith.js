@@ -1,4 +1,4 @@
-// Load TreeView
+// Load Blacksmith modules
 var tree = require('./lib/treeView');
 var openFile = require('./lib/openFile');
 var fileManager = require('./lib/fileManager');
