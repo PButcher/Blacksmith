@@ -90,13 +90,88 @@ function setupTreeViewListeners() {
 // + openFile
 // Tries to open the specified file
 function openFile(filepath) {
+
+  // Open file
   var fid = fm.open(filepath);
-  pm.addTab(fid, fm.files[fid]);
+
+  // Create a new tab if this file has not alread been opened
+  if(pm.addTab(fid, fm.files[fid])) {
+    addTabEventListeners(fid);
+    tabActive(fid);
+
+  // Switch to this file if it is already open
+  } else {
+    fm.files.forEach(function(el, i, arr) {
+      if(fm.files[i].filePath == filepath) tabActive(i);
+    });
+  }
 }
 
 // + closeFile
 // Tries to close the specified file
 function closeFile(fid) {
+
+  // Close file
   fm.close(fid);
+
+  // Remove tab
   pm.removeTab(fid);
+
+  // Switch to next active tab if one exists
+  fm.files.forEach(function(el, i, arr) {
+    if(fm.files[i] != 0) tabActive(i);
+  });
+}
+
+// + addTabEventListeners
+// Add event listeners to tab components
+//    fid     : file id
+function addTabEventListeners(fid) {
+
+  // When the tab close icon is clicked
+  $('#tab-' + fid + ' i').click(function() {
+    closeFile(fid);
+  });
+
+  // When the tab itself is clicked
+  $('#tab-' + fid).click(function() {
+    tabActive(fid);
+  });
+}
+
+// + tabSelected
+// Things to do when a tab is active
+//    fid       : file id
+function tabActive(fid) {
+
+  // Set active tab
+  pm.setActiveTab(fid);
+
+  // Update title bar
+  updateTitle(fm.files[fid].fileName);
+
+  // Build string for status bar
+  var statusString = fm.files[fid].fileName +
+    ' - ' +
+    fm.files[fid].filePath +
+    ' [' +
+    fm.files[fid].fileType +
+    ']';
+
+  // Update status bar string
+  updateStatusBar(statusString);
+}
+
+// + updateStatusBar
+// Updates status bar
+//    text     : text to add to status bar
+function updateStatusBar(text) {
+  $('#status-bar').html(text);
+}
+
+// + updateTitle
+// Updates window title
+//    text     : text to add to title
+function updateTitle(text) {
+  $('title').html("Blacksmith - " + text);
 }

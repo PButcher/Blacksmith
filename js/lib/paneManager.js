@@ -22,6 +22,7 @@ PaneManager.prototype.addTab = function(fid, file) {
       'filepath':file.filePath
     });
     this.drawTab(fid, file);
+    return 1;
   } else {
     return 0;
   }
@@ -34,6 +35,8 @@ PaneManager.prototype.removeTab = function(fid) {
       this.panes[pid].tabs.splice(i, 1);
     }
   }
+  $('#tab-' + fid).remove();
+  $('#body-' + fid).remove();
 }
 
 PaneManager.prototype.updatePanes = function() {
@@ -61,38 +64,50 @@ PaneManager.prototype.addPane = function(p) {
 
 PaneManager.prototype.drawTab = function(fid, file) {
 
-  var newTab = '<a href="#" class="code-tab tab-active" id="tab-' + file.fid + '"><span>' + file.fileName + '</span><i class="fa fa-close"></i>';
+  // Set active tab
+  this.setActiveTab(fid);
 
+  // New tab template
+  var newTab = '<a href="#" class="code-tab tab-active" data-tab="' + fid +
+  '" id="tab-' + fid + '"><span>' + file.fileName + '</span><i class="fa fa-close"></i>';
+
+  // Add tab to pane
   $('#code-pane-' + this.paneInFocus + ' .code-tabs').append(newTab);
 
+  // Inject file contents into tab once contents have been read
   watch(file, "fileContents", function a(prop, action, newvalue, oldvalue) {
 
-    var newBody = '<div class="code-body"><pre class="line-numbers"><code class="language-' + file.fileType + '">' +
-      newvalue + '</code></pre>';
+    var newBody = '<div class="code-body" data-body="' + fid +
+    '" id="body-' + fid +
+    '"><pre class="line-numbers"><code class="language-' + file.fileType +
+    '">' + newvalue + '</code></pre>';
 
-      $('#code-pane-' + this.paneInFocus + ' .code-bodies').html(newBody);
-      console.log(this.paneInFocus);
+      $('#code-pane-' + this.paneInFocus + ' .code-bodies').append(newBody);
 
       Prism.highlightAll();
 
   }.bind(this));
+}
 
-  // $('#code-pane-' + this.paneInFocus + ' .code-tabs').append(newTab);
+// + setActiveTab
+// Sets the active tab
+//    fid     : file id
+PaneManager.prototype.setActiveTab = function(fid) {
 
-  //                   '<nav class="code-tabs">' +
-  // var template = '<div class="pane pane-column-10 code-pane" id="code-pane">' +
-  //                     '<a href="#" class="code-tab tab-active">' +
-  //                       '<span>Tab</span>' +
-  //                       '<i class="fa fa-close"></i>' +
-  //                     '</a>' +
-  //                   '</nav>' +
-  //                   '<div class="code-bodies">' +
-  //                     '<div class="code-body">' +
-  //                       '<pre class="line-numbers"><code class="language-scss"> </code></pre>' +
-  //                     '</div>' +
-  //                   '</div>' +
-  //                 '</div>';
-  // $('#code').html(template);
+  // Remove active class from all tabs
+  $('.tab-active').removeClass('tab-active');
+
+  // Hide all code bodies
+  $('.code-body').hide();
+
+  // Set focussed tab
+  this.tabInFocus = this.panes[this.paneInFocus].tabs[fid];
+
+  // Add highlight to active tab
+  $('#tab-' + fid).addClass('tab-active');
+
+  // Show active body
+  $('#body-' + fid).show();
 }
 
 // exports

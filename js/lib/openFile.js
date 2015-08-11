@@ -9,6 +9,7 @@ var fileTypes = {
   'o': 'c',
   'h': 'c',
   'css': 'css',
+  'map': 'javascript',
   'js': 'javascript',
   'json': 'javascript',
   'asp': 'asp',
@@ -35,7 +36,7 @@ function File(filepath) {
   this.fileExtension = this.getExtension();
   this.fileContents = '';
   this.read(this.filePath, function(err, data) {
-    this.fileContents = data;
+    this.fileContents = data.replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }.bind(this));
 }
 

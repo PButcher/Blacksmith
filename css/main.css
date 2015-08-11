@@ -86,16 +86,21 @@ main, section, .view {
       display: inline-block;
       font-size: 0.75em;
       height: 40px;
-      line-height: 40px;
-      min-width: 75px;
-      max-width: 150px;
-      padding: 0px 5px;
+      line-height: 36px;
+      width: 150px;
+      padding: 0px 10px;
       text-decoration: none; }
       .code-pane .code-tabs .code-tab.tab-active {
+        background-color: #222222;
         border-color: #006CB5; }
+        .code-pane .code-tabs .code-tab.tab-active i {
+          color: #888888; }
+          .code-pane .code-tabs .code-tab.tab-active i:hover {
+            color: #AAAAAA; }
       .code-pane .code-tabs .code-tab i {
         line-height: 36px;
-        float: right; }
+        float: right;
+        color: #333333; }
         .code-pane .code-tabs .code-tab i:hover {
           cursor: pointer;
           color: #888888; }

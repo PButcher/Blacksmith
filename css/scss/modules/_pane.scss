@@ -30,29 +30,34 @@
     overflow: visible;
 
     .code-tab {
-      // background-color: $colour-card-bg;
       box-sizing: border-box;
       border-bottom: solid $tab-border-height $colour-dark-grey;
       color: $colour-main-text-alt;
       display: inline-block;
       font-size: $text-size-smaller;
       height: $code-tab-height;
-      line-height: $code-tab-height;
-      min-width: 75px;
-      max-width: 150px;
-      padding: 0px 5px;
+      line-height: $code-tab-height - $tab-border-height;
+      width: 150px;
+      padding: 0px 10px;
       text-decoration: none;
 
       &.tab-active {
+        background-color: $colour-m-dark-grey;
         border-color: $colour-light-blue;
+        i {
+          color: $colour-button-outline;
+          &:hover {
+            color: $colour-light-grey;
+          }
+        }
       }
       span {
 
       }
       i {
-        // margin-right: 5px;
         line-height: $code-tab-height - 4;
         float: right;
+        color: $colour-dark-grey;
         &:hover {
           cursor: pointer;
           color: $colour-button-outline;
