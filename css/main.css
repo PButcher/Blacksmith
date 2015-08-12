@@ -78,7 +78,7 @@ main, section, .view {
     position: relative;
     width: 100%;
     background-color: #1C1C1C;
-    overflow: visible; }
+    overflow: hidden; }
     .code-pane .code-tabs .code-tab {
       box-sizing: border-box;
       border-bottom: solid 4px #333333;
@@ -89,7 +89,8 @@ main, section, .view {
       line-height: 36px;
       width: 150px;
       padding: 0px 10px;
-      text-decoration: none; }
+      text-decoration: none;
+      white-space: nowrap; }
       .code-pane .code-tabs .code-tab.tab-active {
         background-color: #222222;
         border-color: #006CB5; }
@@ -98,7 +99,11 @@ main, section, .view {
           .code-pane .code-tabs .code-tab.tab-active i:hover {
             color: #AAAAAA; }
       .code-pane .code-tabs .code-tab span {
-        overflow: ellipsis; }
+        display: block;
+        float: left;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
       .code-pane .code-tabs .code-tab i {
         line-height: 36px;
         float: right;

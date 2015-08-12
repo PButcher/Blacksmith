@@ -27,7 +27,7 @@
     position: relative;
     width: 100%;
     background-color: $colour-v-dark-grey;
-    overflow: visible;
+    overflow: hidden;
 
     .code-tab {
       box-sizing: border-box;
@@ -40,6 +40,7 @@
       width: 150px;
       padding: 0px 10px;
       text-decoration: none;
+      white-space: nowrap;
 
       &.tab-active {
         background-color: $colour-m-dark-grey;
@@ -52,7 +53,11 @@
         }
       }
       span {
-        overflow: ellipsis;
+        display: block;
+        float: left;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
       i {
         line-height: $code-tab-height - 4;
