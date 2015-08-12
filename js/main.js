@@ -19,6 +19,10 @@ var fm = new blacksmith.fileManager();
 // Pane manager
 var pm = new blacksmith.paneManager();
 
+$(window).resize(function() {
+  resizeTabs();
+});
+
 // jQuery magic happens here
 $('document').ready(function() {
 
@@ -66,7 +70,10 @@ function setupMain() {
   setupMenu();
   setupTreeView();
   setupTreeViewListeners();
-  pm.updatePanes();
+
+  // Add initial pane
+  pm.registerPane();
+  pm.renderPane();
 }
 
 // + setupMenu
@@ -75,8 +82,8 @@ function setupMenu() {
 
   // Pane toggle
   $('#btn-toggle-pane').click(function() {
-
-    // Do something
+    pm.togglePane();
+    resizeTabs();
     console.log("Button: Toggle panes");
   });
 
@@ -104,7 +111,39 @@ function setupTreeViewListeners() {
   // When a file in treeView is clicked
   $('.bs-file').click(function() {
     openFile($(this).attr('data-path'));
+    resizeTabs();
   });
+}
+
+// + resizeTabs
+// Resize pane tabs so they do not overflow
+function resizeTabs() {
+
+  // Get values for tab scaling BEFORE change
+  var defaultTabWidth = 150;
+  var numberOfTabs = pm.getNumberOfTabs(0);
+  var paneWidth = $('.code-pane').width();
+  var w = Math.floor(100 / numberOfTabs);
+  var tabs = $('#code-pane-0 .code-tab');
+  var tabText = $('#code-pane-0 .code-tab span');
+  tabText.css("width", "auto");
+  var tabsWidth;
+  var tabTextWidth;
+
+  // If the tabs won't all fit...
+  if((numberOfTabs * defaultTabWidth) >= paneWidth) {
+    w = w.toString() + "%";
+    tabs.css("width", w);
+
+    // Update values for tab scaling AFTER change
+    tabs = $('#code-pane-0 .code-tab');
+    tabText = $('#code-pane-0 .code-tab span');
+    tabsWidth = tabs.outerWidth();
+    tabTextWidth = tabsWidth - 55;
+    tabText.css("width", tabTextWidth);
+  } else {
+    tabs.css("width", defaultTabWidth);
+  }
 }
 
 // + openFile
@@ -113,9 +152,14 @@ function openFile(filepath) {
 
   // Open file
   var fid = fm.open(filepath);
+  var file = fm.getFile(fid);
 
-  // Create a new tab if this file has not already been opened
-  if(pm.addTab(fid, fm.files[fid])) {
+  // If the file exists
+  if(fid != undefined) {
+
+    // Create a new tab if this file has not already been opened
+    pm.registerTab(fid, file);
+    pm.renderTab(fid, file);
 
     // Add event listeners to tab
     addTabEventListeners(fid);
@@ -124,12 +168,12 @@ function openFile(filepath) {
     tabActive(fid);
 
     // Log opened file
-    console.log("Opened: " + fm.files[fid].fileName);
+    console.log("Opened: " + fm.getFilename(fid));
 
   // Switch to this file if it is already open
   } else {
     fm.files.forEach(function(el, i, arr) {
-      if(fm.files[i].filePath == filepath) tabActive(i);
+      if(fm.getFilepath(i) == filepath) tabActive(i);
     });
   }
 }
@@ -142,17 +186,18 @@ function closeFile(fid) {
   fm.close(fid);
 
   // Remove tab
+  pm.unregisterTab(fid)
   pm.removeTab(fid);
 
   // If this tab is active, switch to next active tab
-  if(pm.tabInFocus.fid == fid) {
-    fm.files.forEach(function(el, i, arr) {
-      if(fm.files[i] != 0) tabActive(i);
+  if(pm.getTabInFocus().fid == fid) {
+    fm.getAllFiles().forEach(function(el, i, arr) {
+      if(fm.getFile(i) != 0) tabActive(i);
     });
   }
 
   // If the last open file was closed
-  if(pm.panes[pm.paneInFocus].tabs.length == 0) {
+  if(pm.getNumberOfTabs() == 0) {
     clearStatusBar();
     clearTitle();
   }
@@ -173,10 +218,12 @@ function addTabEventListeners(fid) {
   // When the tab close icon is clicked
   $('#tab-' + fid + ' i').click(function() {
     closeFile(fid);
+    resizeTabs();
   });
 
   // When the tab itself is clicked
   $('#tab-' + fid).click(function() {
+    resizeTabs();
     tabActive(fid);
   });
 }
@@ -190,14 +237,14 @@ function tabActive(fid) {
   pm.setActiveTab(fid);
 
   // Update title bar
-  updateTitle(fm.files[fid].fileName);
+  updateTitle(fm.getFilename(fid));
 
   // Build string for status bar
-  var statusString = fm.files[fid].fileName +
+  var statusString = fm.getFilename(fid) +
     ' - ' +
-    fm.files[fid].filePath +
+    fm.getFilepath(fid) +
     ' [' +
-    fm.files[fid].fileType +
+    fm.getFiletype(fid) +
     ']';
 
   // Update status bar string
