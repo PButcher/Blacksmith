@@ -1,6 +1,15 @@
 // Testing?
 var testing = true;
 
+// GUI state
+var gui = {
+
+  // 0 = 0%
+  // 1 = 20%
+  // 2 = 40%
+  annotations: 2
+}
+
 // Load JQuery
 window.$ = window.jQuery = require('./vendor/jquery/dist/jquery.min.js');
 
@@ -18,6 +27,9 @@ var fm = new blacksmith.fileManager();
 
 // Pane manager
 var pm = new blacksmith.paneManager();
+
+// Annotator
+var atr = new blacksmith.annotator();
 
 $(window).resize(function() {
   resizeTabs();
@@ -81,10 +93,11 @@ function setupMain() {
 function setupMenu() {
 
   // Pane toggle
-  $('#btn-toggle-pane').click(function() {
-    pm.togglePane();
-    resizeTabs();
-    console.log("Button: Toggle panes");
+  $('#btn-toggle-annotations').click(function() {
+    toggleAnnotations();
+    console.log("Button: Toggle annotations");
+    // pm.togglePane();
+    // resizeTabs();
   });
 
   // Sign out
@@ -113,6 +126,57 @@ function setupTreeViewListeners() {
     openFile($(this).attr('data-path'));
     resizeTabs();
   });
+}
+
+// + toggleAnnotations
+// Toggle the annotations pane
+function toggleAnnotations() {
+
+  // Transition annotations from 40% to 20%
+  if(gui.annotations == 2) {
+
+    // Code -> 80%
+    $('#row-code')
+      .removeClass('pane-row-6')
+      .addClass('pane-row-8');
+
+    // Annotations -> 20%
+    $('#row-annotations')
+      .removeClass('pane-row-4')
+      .addClass('pane-row-2');
+
+    gui.annotations = 1;
+
+  // Transition annotations from 20% to hidden
+  } else if(gui.annotations == 1) {
+
+    // Code -> 100%
+    $('#row-code')
+      .removeClass('pane-row-8')
+      .addClass('pane-row-10');
+
+    // Annotations -> hidden
+    $('#row-annotations')
+      .removeClass('pane-row-2')
+      .hide();
+
+    gui.annotations = 0;
+
+  // Transition annotations from hidden to 40%
+  } else if(gui.annotations == 0) {
+
+    // Code -> 60%
+    $('#row-code')
+      .removeClass('pane-row-10')
+      .addClass('pane-row-6');
+
+    // Annotations -> 40%
+    $('#row-annotations')
+      .addClass('pane-row-4')
+      .show();
+
+    gui.annotations = 2;
+  }
 }
 
 // + resizeTabs
