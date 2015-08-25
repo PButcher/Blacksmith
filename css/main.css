@@ -234,6 +234,9 @@ i {
 ::-webkit-scrollbar-corner {
   background-color: #1C1C1C; }
 
+.annotations {
+  box-sizing: border-box; }
+
 .view-entry {
   width: 600px;
   height: 400px;

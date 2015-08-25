@@ -1,0 +1,33 @@
+@import '../modules/annotations';
+
+.annotations {
+  @include annotations;
+}
+
+.review-type {
+  @include review-type;
+}
+
+.review-name {
+  @include review-name;
+}
+
+.review-title {
+  @include review-title;
+}
+
+.review-subtitle {
+  @include review-subtitle;
+}
+
+.review-question {
+  @include review-question;
+}
+
+.review-answer {
+  @include review-answer;
+}
+
+.review-hint {
+  @include review-hint;
+}
