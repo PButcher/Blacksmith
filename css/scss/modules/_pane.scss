@@ -89,5 +89,13 @@
       padding-top: 0 !important;
       padding-bottom: 0 !important;
     }
+    code {
+      &::selection {
+        background-color: #888;
+      }
+      span::selection {
+        background-color: #888;
+      }
+    }
   }
 }

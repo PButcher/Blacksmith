@@ -1,13 +1,23 @@
-// Testing?
-var testing = true;
+var testing = true,
+    debug = true;
 
 // GUI state
 var gui = {
 
+  // Annotations pane
   // 0 = 0%
   // 1 = 20%
   // 2 = 40%
-  annotations: 2
+  annotations: 2,
+
+  // Code viewer line height in pixels
+  codeLineHeight: 16
+}
+
+// Cursor state
+var cursor = {
+  yDown: 0,
+  yUp: 0
 }
 
 // Load JQuery
@@ -29,7 +39,7 @@ var fm = new blacksmith.fileManager();
 var pm = new blacksmith.paneManager();
 
 // Annotator
-var atr = new blacksmith.annotator();
+var atr = new blacksmith.annotator(fm, pm);
 
 $(window).resize(function() {
   resizeTabs();
@@ -67,7 +77,11 @@ function setupEntry() {
   // Sign in
   $('#sign-in').click(function() {
 
-    // Do login
+    if(debug) console.log("Button: Log in");
+    // Do login checks here
+    // ...
+
+    // Login ok -> Main view
     view('main');
   });
 
@@ -81,7 +95,7 @@ function setupEntry() {
 function setupMain() {
   setupMenu();
   setupTreeView();
-  setupTreeViewListeners();
+  setupAnnotations();
 
   // Add initial pane
   pm.registerPane();
@@ -103,7 +117,10 @@ function setupMenu() {
   // Sign out
   $('#btn-sign-out').click(function() {
 
-    // Do something
+    // Do logout checks here
+    // ...
+
+    // Logout ok -> Login view
     console.log("Button: Sign out");
   });
 }
@@ -114,18 +131,16 @@ function setupTreeView() {
   var tree = new blacksmith.tree();
   tree.anchor = '#tree-view';
   tree.ommit = ['.git', '.sass-cache', 'node_modules', 'vendor'];
-  tree.render();
-}
-
-// + setupTreeViewListeners
-// Any interaction events with the tree-view
-function setupTreeViewListeners() {
-
-  // When a file in treeView is clicked
-  $('.bs-file').click(function() {
+  tree.render().setFileClickEvent(function() {
     openFile($(this).attr('data-path'));
     resizeTabs();
   });
+}
+
+// + setupAnnotations
+// Set up annotations pane
+function setupAnnotations() {
+
 }
 
 // + toggleAnnotations
@@ -231,6 +246,9 @@ function openFile(filepath) {
     // Mark this tab as active
     tabActive(fid);
 
+    // Let this tab be annotated
+    enableTabAnnotations(fid);
+
     // Log opened file
     console.log("Opened: " + fm.getFilename(fid));
 
@@ -265,13 +283,6 @@ function closeFile(fid) {
     clearStatusBar();
     clearTitle();
   }
-}
-
-// + highlightLine
-// Highlight a line of a code block
-function highlightLine(fid, line) {
-  $('#body-' + fid + ' pre').attr('data-line', line);
-  Prism.highlightAll();
 }
 
 // + addTabEventListeners
@@ -339,4 +350,69 @@ function updateTitle(text) {
 // Clear title
 function clearTitle() {
   $('title').html("Blacksmith");
+}
+
+// + enableTabAnnotations
+// Let this tab be annotated
+//    fid       : File ID of tab
+var enableTabAnnotations = function(fid) {
+
+  // Attach events to code viewers
+  $('#code-' + fid)
+
+    // Remove any previous events
+    .unbind()
+
+    // .mousemove(function(e) {
+    //   cursor.yHover = e.pageY - $(this).offset().top;
+    // })
+
+    // Mousedown event
+    .mousedown(function(e) {
+      cursor.yDown = e.pageY - $(this).offset().top;
+      console.log(cursor.yDown);
+    })
+
+    // Mouseup event
+    .mouseup(function(e) {
+      cursor.yUp = e.pageY - $(this).offset().top;
+      console.log(cursor.yUp);
+      selectCode(fid);
+      unselectText();
+    });
+}
+
+// + selectCode
+// Selects lines highlighted by cursor
+function selectCode(fid) {
+
+  // Clear any existing selected lines
+  clearCodeSelection();
+
+  // Calculate the first selected line
+  var first = Math.ceil(cursor.yDown / gui.codeLineHeight);
+
+  // Calculate the last selected line
+  var last = Math.ceil(cursor.yUp / gui.codeLineHeight);
+
+  // If first is larger than last, swap the variables
+  if(first > last) {
+    first = [last, last = first][0];
+  }
+
+  console.log("Highlight: " + fid + " : " + first + " - " + last);
+
+  pm.highlightLines(fid, first, last);
+}
+
+// + clearCodeSelection
+// Unselects any code selection lines
+function clearCodeSelection() {
+
+}
+
+// + unselectText
+// Unselects text that was selected with mouseup
+function unselectText() {
+  window.getSelection().empty();
 }

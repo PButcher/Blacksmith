@@ -15,6 +15,8 @@ function TreeView() {
   this.ommit = [];
 };
 
+// + render
+// Render tree in DOM
 TreeView.prototype.render = function() {
   var tree = seed('./', this.ommit);
   $(tree).appendTo($(this.anchor));
@@ -24,6 +26,9 @@ TreeView.prototype.render = function() {
   return this;
 }
 
+// + makeCollapsible
+// Allow the treeview to collapse
+//    speed      : collapse animation speed
 TreeView.prototype.makeCollapsible = function(speed) {
   var that = this;
   if(!this.collapsible) this.collapsible = true;
@@ -38,24 +43,39 @@ TreeView.prototype.makeCollapsible = function(speed) {
   return this;
 }
 
+// + collapseAll
+// Collapse all directories
 TreeView.prototype.collapseAll = function() {
   $('ul ul').hide();
   $(this.anchor + ' i').removeClass(this.icons.dirOpen);
   $(this.anchor + ' i').addClass(this.icons.dirClosed);
 }
 
+// + addIcons
+// Add icons to files and directories
 TreeView.prototype.addIcons = function() {
   $(".bs-file > a").prepend('<i class="' + this.icons.file + '"></i>');
   $(".bs-directory > a").prepend('<i class="' + this.icons.dirOpen + '"></i>');
 }
 
+// + removeIcons
+// Remove ivons from files and directories
 TreeView.prototype.removeIcons = function() {
   $(".bs-file i, .bs-directory i").remove();
 }
 
+// + remove
+// Remove tree view from DOM
 TreeView.prototype.remove = function() {
   $(this.anchor).html("");
   return this;
+}
+
+// + setFileClickEvent
+// Attach click event listener to file
+//    clickEventFunc  : function to attach
+TreeView.prototype.setFileClickEvent = function(clickEventFunc) {
+  return $('.bs-file').click(clickEventFunc);
 }
 
 // - growTree

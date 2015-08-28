@@ -126,6 +126,10 @@ main, section, .view {
       padding-right: 0 !important;
       padding-top: 0 !important;
       padding-bottom: 0 !important; }
+    .code-pane .code-body code::selection {
+      background-color: #888; }
+    .code-pane .code-body code span::selection {
+      background-color: #888; }
 
 .button {
   border-radius: 2px;

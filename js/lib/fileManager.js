@@ -8,29 +8,29 @@ function FileManager() {
 // Open a file from the file system
 //    filepath   : path to file
 FileManager.prototype.open = function(filepath) {
-  var fileAlreadyOpen = false;
-  var indexOfNew  = 0;
+  if(!this.fileAlreadyOpen(filepath)) {
+    return this.storeFile(filepath);
+  }
+}
+
+// + fileAlreadyOpen
+// Is file at this filepath already open?
+//    filepath    : filepath of file
+FileManager.prototype.fileAlreadyOpen = function(filepath) {
   var numberOfFiles = this.getNumberOfFiles();
-  if(numberOfFiles != 0) {
-    for(var i = 0; i < numberOfFiles; i++) {
-      if(this.getFilepath(i) == filepath) {
-        fileAlreadyOpen = true;
-        break;
-      }
-      indexOfNew++;
+  for(var i = 0; i < numberOfFiles; i++) {
+    if(this.getFilepath(i) == filepath) {
+      return true;
     }
   }
-  if(fileAlreadyOpen == false) {
-    this.storeFile(filepath);
-    return indexOfNew;
-  }
+  return false;
 }
 
 // + close
 // Close a file
 //    fid     : File ID
 FileManager.prototype.close = function(fid) {
-  this.clearFile(fid);
+  this.removeFile(fid);
   return fid;
 }
 
@@ -39,12 +39,13 @@ FileManager.prototype.close = function(fid) {
 //    filepath   : Path to file
 FileManager.prototype.storeFile = function(filepath) {
   this.files.push(new blacksmith.file(filepath));
+  return this.getNumberOfFiles() - 1;
 }
 
-// + clearFile
+// + removeFile
 // Remove file from file array
 //    fid     : File ID
-FileManager.prototype.clearFile = function(fid) {
+FileManager.prototype.removeFile = function(fid) {
   this.files[fid] = 0;
 }
 
